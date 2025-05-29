@@ -1,11 +1,11 @@
 const express = require("express");
-const mongoose = require("mongoose")
+
 
 const app = express();
 
 const cors = require("cors");
 
-const Employee = require("./models/employeeModel");
+const Employee = require("./Models/employeeModel");
 
 mongoose.connect('mongodb+srv://arva:GkYKTgSHWgYkdGis@cluster0.fjsok3j.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0').then(() => {
     console.log('Connected to MongoDB')

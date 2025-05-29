@@ -25,7 +25,7 @@ const employeeSchema = new mongoose.Schema({
     },
     reportingManager: {
         type: String,
-        require: true
+        required: true
     },
     department: {
         type: String,
