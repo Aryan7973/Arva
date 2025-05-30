@@ -48,7 +48,7 @@ const createEmployee = async (req, res) => {
         res.send("Employee created!")
 
     } catch (error) {
-        console.log(Error)
+        console.log(error)
         res.send("Internal system error!")
     }
 }

@@ -15,7 +15,7 @@ const employeeSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    jobeRole: {
+    jobRole: {
         type: String,
         required: true
     },
