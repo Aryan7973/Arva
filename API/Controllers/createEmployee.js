@@ -1,7 +1,6 @@
-const mongoose = require("mongoose")
 const Employee = require("../Models/employeeModel")
 
-const createEmployee = async (req, res) => {
+export const createEmployee = async (req, res) => {
     const {
         employeeId,
         firstName,
@@ -20,24 +19,37 @@ const createEmployee = async (req, res) => {
         workShift
     } = req.body;
 
-    // Here goes the code to validate if the Employee already exists
+    try {
+        let existingEmployee = await Employee.findOne({ email: companyEmail })
 
-    const user = await Employee.create({
-        employeeId: employeeId,
-        firstName: firstName,
-        lastName: lastName,
-        jobRole: jobRole,
-        dateOfBirth: dateOfBirth,
-        reportingManager: reportingManager,
-        department: department,
-        projectCode: projectCode,
-        joiningDate: joiningDate,
-        companyEmail: companyEmail,
-        personalEmail: personalEmail,
-        gender: gender,
-        phoneNumber: phoneNumber,
-        password: password,
-        workShift: workShift
-    })
+        if (existingEmployee) {
+            console.log("Employee exists!")
+            res.send("Employee already exists!")
+        }
+
+        const user = await Employee.create({
+            employeeId: employeeId,
+            firstName: firstName,
+            lastName: lastName,
+            jobRole: jobRole,
+            dateOfBirth: dateOfBirth,
+            reportingManager: reportingManager,
+            department: department,
+            projectCode: projectCode,
+            joiningDate: joiningDate,
+            companyEmail: companyEmail,
+            personalEmail: personalEmail,
+            gender: gender,
+            phoneNumber: phoneNumber,
+            password: password,
+            workShift: workShift
+        })
+
+        res.send("Employee created!")
+
+    } catch (error) {
+        console.log(Error)
+        res.send("Internal system error!")
+    }
 }
 
