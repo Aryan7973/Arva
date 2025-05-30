@@ -1,6 +1,6 @@
 const Employee = require("../Models/employeeModel")
 
-export const createEmployee = async (req, res) => {
+const createEmployee = async (req, res) => {
     const {
         employeeId,
         firstName,
@@ -32,11 +32,11 @@ export const createEmployee = async (req, res) => {
             firstName: firstName,
             lastName: lastName,
             jobRole: jobRole,
-            dateOfBirth: dateOfBirth,
+            dateOfBirth:new Date(dateOfBirth),
             reportingManager: reportingManager,
             department: department,
             projectCode: projectCode,
-            joiningDate: joiningDate,
+            joiningDate: new Date(joiningDate),
             companyEmail: companyEmail,
             personalEmail: personalEmail,
             gender: gender,
@@ -53,3 +53,4 @@ export const createEmployee = async (req, res) => {
     }
 }
 
+module.exports = {createEmployee}

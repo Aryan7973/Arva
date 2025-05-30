@@ -1,9 +1,11 @@
 const express = require("express");
+const mongoose = require("mongoose")
 const cookieParser = require("cookie-parser")
 const employeeRoute = require("./Routes/employeeRoute")
 
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({extended:false}))
 app.use(cookieParser());
 
 const cors = require("cors");
