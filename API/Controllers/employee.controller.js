@@ -1,5 +1,7 @@
 const Employee = require("../Models/employeeModel")
 
+
+// Create
 const createEmployee = async (req, res) => {
     const {
         employeeId,
@@ -32,7 +34,7 @@ const createEmployee = async (req, res) => {
             firstName: firstName,
             lastName: lastName,
             jobRole: jobRole,
-            dateOfBirth:new Date(dateOfBirth),
+            dateOfBirth: new Date(dateOfBirth),
             reportingManager: reportingManager,
             department: department,
             projectCode: projectCode,
@@ -53,4 +55,47 @@ const createEmployee = async (req, res) => {
     }
 }
 
-module.exports = {createEmployee}
+// Read
+const showEmployees = async (req, res) => {
+    const employees = await Employee.find();
+    res.json(employees);
+}
+
+// Update
+const updateEmployee = async (req, res) => {
+    const employeeId = req.params.employeeId;
+    console.log(employeeId)
+    try {
+        const employeeExists = await Employee.findOne({ employeeId: employeeId });
+        console.log(employeeExists)
+        if (!employeeExists) {
+            return res.send("Employee not found!")
+        }
+        const employee = await Employee.updateOne({ employeeId:employeeId }, { $set: req.body }, { new: true })
+        res.send(employee);
+
+    }catch (error) {
+        console.log(error)
+        res.send("Internal system error!");
+    }
+}
+
+// Delete
+const removeEmployee = async (req, res) => {
+    const { employeeId } = req.body
+
+    try {
+        const employeeExists = await Employee.findOne({ employeeId: employeeId });
+        if (!employeeExists) {
+            return res.send("Employee not found!")
+        }
+        await Employee.deleteOne({ employeeId: employeeId });
+        res.send("Employee Removed!")
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).json("Internal system error!")
+    }
+}
+
+module.exports = { createEmployee, showEmployees, updateEmployee,removeEmployee }
