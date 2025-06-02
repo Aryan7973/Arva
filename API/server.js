@@ -1,9 +1,12 @@
+// Packages
 const express = require("express");
 const mongoose = require("mongoose")
 const cookieParser = require("cookie-parser")
+
+// Routes
 const employeeRoute = require("./Routes/employeeRoute")
 
-const app = express();
+const app = express();  // Initialise express App
 app.use(express.json());
 app.use(express.urlencoded({extended:false}))
 app.use(cookieParser());
