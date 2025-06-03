@@ -6,15 +6,19 @@ const employeeSchema = new mongoose.Schema({
     employeeId: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
+        minLength:8,
+        maxLength:8
     },
     firstName: {
         type: String,
-        required: true
+        required: true,
+        minLength:3,
     },
     lastName: {
         type: String,
-        required: true
+        required: true,
+        minLength:3,
     },
     jobRole: {
         type: String,

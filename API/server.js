@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser")
 
 // Routes
 const employeeRoute = require("./Routes/employeeRoute")
+const authRoute = require("./Routes/auth.route")
 
 const app = express();  // Initialise express App
 app.use(express.json());
@@ -24,3 +25,4 @@ app.listen(5000, () => {
 });
 
 app.use("/api/employee",employeeRoute);
+app.use("/api/auth",authRoute)

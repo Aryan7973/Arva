@@ -65,13 +65,14 @@ const showEmployees = async (req, res) => {
 const updateEmployee = async (req, res) => {
     const employeeId = req.params.employeeId;
     console.log(employeeId)
+    const {password, companyEmail, ...updates} = req.body;
     try {
         const employeeExists = await Employee.findOne({ employeeId: employeeId });
         console.log(employeeExists)
         if (!employeeExists) {
             return res.send("Employee not found!")
         }
-        const employee = await Employee.updateOne({ employeeId:employeeId }, { $set: req.body }, { new: true })
+        const employee = await Employee.updateOne({ employeeId:employeeId }, { $set: updates }, { new: true })
         res.send(employee);
 
     }catch (error) {
@@ -97,5 +98,6 @@ const removeEmployee = async (req, res) => {
         res.status(500).json("Internal system error!")
     }
 }
+
 
 module.exports = { createEmployee, showEmployees, updateEmployee,removeEmployee }
