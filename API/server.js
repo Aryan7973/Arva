@@ -2,9 +2,11 @@
 const express = require("express");
 const mongoose = require("mongoose")
 const cookieParser = require("cookie-parser")
+const dotenv = require("dotenv")
+dotenv.config()
 
 // Routes
-const employeeRoute = require("./Routes/employeeRoute")
+const employeeRoute = require("./Routes/employee.route")
 const authRoute = require("./Routes/auth.route")
 
 const app = express();  // Initialise express App

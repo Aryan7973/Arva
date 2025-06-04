@@ -1,39 +1,39 @@
-const employeeSchema = require("../Models/employeeModel")
+const employeeSchema = require("../Models/employee.model")
 const {generateToken} = require("../Utils/jwt")
 
 
 const signIn = async(req,res)=>{
-     const { email, password } = req.body;
+     const { companyEmail, password } = req.body;
 
     // Basic validation
-    if (!email || !password) {
+    if (!companyEmail || !password) {
         return res.status(400).json({ msg: 'Please enter all fields' });
     }
 
     try {
 
         // Check if user exists by email
-        let employee = await employeeSchema.findOne({ email });
+        let employee = await employeeSchema.findOne({ companyEmail });
         if (!employee) {
             return res.status(400).json({ msg: 'Invalid email!' });
         }
 
         // Compare entered password with hashed password
-        const isMatch = await employeeSchema.comparePassword(password);
+        const isMatch = await employee.comparePassword(password);
         if (!isMatch) {
             return res.status(400).json({ msg: 'Wrong password!' });
         }
 
         // User authenticated, generate JWT token
-        const token = generateToken(employee._id);
+        const token = generateToken({employeeId:employee._id,companyEmail:companyEmail,employeeName:employee.firstName});
 
         res.json({
             msg: 'Signed in successfully',
-            token,
+            token:token,
             employee: {
                 id: employee._id,
-                username: employee.username,
-                email: employee.email,
+                username: employee.firstName+" "+employee.lastName,
+                companyEmail: employee.companyEmail,
             },
         });
 
