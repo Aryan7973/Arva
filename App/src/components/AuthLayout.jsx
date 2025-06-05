@@ -1,13 +1,13 @@
-import React from 'react'
+import './AuthLayout.css'
 import {Outlet, Link} from  'react-router-dom'
 
 const AuthLayout = ()=>{
     return(
-        <div>
+        <div className="form-container">
             <h2>HRMS</h2>
             <nav>
                 <Link to='login'>Login</Link>
-                <Link to='createEmployee'>Register new employee</Link>
+                <Link to='register'>Register new employee</Link>
             </nav>
             <div>
                 <Outlet/>
