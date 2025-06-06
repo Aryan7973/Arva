@@ -2,7 +2,7 @@ import './App.css'
 import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom"
 import AuthLayout from './components/AuthLayout'
 import CreateEmployee from './components/CreateEmployee'
-import LoginForm from './components/LoginForm'
+import LoginPage from './components/LoginPage.jsx'
 
 function App() {
 
@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="auth/login"/>}/>
         <Route path="/auth" element={<AuthLayout/>}>
-          <Route path="login" element={<LoginForm/>}/>
+          <Route path="login" element={<LoginPage/>}/>
           <Route path="register" element={<CreateEmployee/>}/>
         </Route>
       </Routes>

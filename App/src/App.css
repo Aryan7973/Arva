@@ -3,10 +3,14 @@
     padding:0;
 }
 
+*:not(h1,h2,h3,h4){
+    font-size:16.4px;
+}
+
 .app-container{
     height:100vh;
     width:100vw;
     display:flex;
     justify-content:center;
-    overflow:scroll;
+    overflow:hidden;
 }
