@@ -1,8 +1,10 @@
 import axios from 'axios'
-import React,{useState} from 'react'
+import {useState, useEffect} from 'react'
 import './LoginPage.css'
 import Popup from "./Popup.jsx"
- 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+
 const LoginForm = () => {
 
     const [companyEmail, setcompanyEmail] = useState('');
@@ -13,15 +15,16 @@ const LoginForm = () => {
     const handleSubmit = async(e)=>{
         e.preventDefault();
 
-        const backendUrl = 'http://localhost:5000/api/auth/signin';
+        const backendUrl = 'https://super-duper-acorn-9p6xqgr6vvxc99gg-5000.app.github.dev/api/auth/signin';
 
         try{
             const response = await axios.post(backendUrl,{companyEmail,password});
             console.log(response)
-            setResponseMessage(`Success: ${response.data.msg}`);
+            setResponseMessage(`${response.data.msg}`);
             setShowPopup(true);
             console.log(response.data)
         }catch(error){
+            console.log(error)
             if(error.response){
                 setResponseMessage(`${error.response.data.msg || 'Someting went wrong!'}`);
             }else if(error.request){
@@ -38,6 +41,19 @@ const LoginForm = () => {
         setShowPopup(false);
         setResponseMessage('');
     }
+    
+    useEffect(()=>{
+        let timer;
+        if(showPopup){
+            timer = setTimeout(()=>{
+                setShowPopup(false)
+                setResponseMessage('')
+            },5000)
+        }
+        return ()=>{
+            clearTimeout(timer)
+        }
+    },[showPopup])
 
     return (
         <div className="login-container">
@@ -46,11 +62,12 @@ const LoginForm = () => {
                     <div className="login-form">
                         <h2>Login to <span style={{ 'color': '#205295', 'fontSize': '18px' }}>ARVA</span></h2>
                         <form>
-                            <input type="email" value={companyEmail} onChange={(e)=>setcompanyEmail(e.target.value)} placeholder="Enter organisation companyEmail" required />
+                            <input type="email" value={companyEmail} onChange={(e)=>setcompanyEmail(e.target.value)} placeholder="Enter organisation email" required />
                             <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Enter password" required />
                         </form>
                         <p>Forgot password?</p>
-                        <button onClick={handleSubmit}>But</button>
+                        <button className="form-button" onClick={handleSubmit}><FontAwesomeIcon className="arrow-icon" icon={faArrowRight} color="white"/></button>
+                        
                     </div>
                 </div>
                 <div className="login-right-panel">

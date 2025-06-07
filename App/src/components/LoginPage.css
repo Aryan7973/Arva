@@ -88,6 +88,13 @@
         width:50px;
         height:50px;
         border-radius:50%;
+
+        &:hover{
+            cursor:pointer;
+        }
+        &:hover .arrow-icon{
+            transform:translateX(2px);
+        }
     }
 }
 
