@@ -16,7 +16,7 @@ app.use(cookieParser());
 
 const cors = require("cors");
 app.use(cors({
-    origin: 'https://super-duper-acorn-9p6xqgr6vvxc99gg-5173.app.github.dev', // Only allow your frontend Codespaces URL
+    origin: 'http://localhost:5173', // Only allow your frontend Codespaces URL
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Or whatever methods your API uses
     allowedHeaders: ['Content-Type', 'Authorization'], // Allow necessary headers
     credentials: true // If you're using cookies/sessions

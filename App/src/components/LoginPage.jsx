@@ -15,7 +15,7 @@ const LoginForm = () => {
     const handleSubmit = async(e)=>{
         e.preventDefault();
 
-        const backendUrl = 'https://super-duper-acorn-9p6xqgr6vvxc99gg-5000.app.github.dev/api/auth/signin';
+        const backendUrl = 'http://localhost:5000/api/auth/signin';
 
         try{
             const response = await axios.post(backendUrl,{companyEmail,password});
