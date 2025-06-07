@@ -1,7 +1,7 @@
 import './App.css'
 import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom"
 import AuthLayout from './components/AuthLayout'
-import CreateEmployee from './components/CreateEmployee'
+import RegisterEmployee from './components/RegisterEmployee'
 import LoginPage from './components/LoginPage.jsx'
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
         <Route path="/" element={<Navigate to="auth/login"/>}/>
         <Route path="/auth" element={<AuthLayout/>}>
           <Route path="login" element={<LoginPage/>}/>
-          <Route path="register" element={<CreateEmployee/>}/>
+          <Route path="register" element={<RegisterEmployee/>}/>
         </Route>
       </Routes>
    </Router>

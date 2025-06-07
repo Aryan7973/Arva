@@ -1,0 +1,141 @@
+.registeration-container{
+    background-color: #232129;
+    height:100vh;
+    width:100vw;    
+    display:flex;
+}
+
+.left-section{
+    display:flex;
+    justify-content: flex-end;
+    flex:1;
+    color:white;
+    & ul{
+        margin-right: 10px;
+        margin-top:100px;
+    }
+    & ul>li{
+        list-style: none;
+        font-size:12px;
+        margin-top:10px;
+        transition:color 0.2s ease-in-out;
+        &:hover{
+            color:#205295;
+            cursor:pointer;
+        }
+    }
+    border-style:solid;
+    border-width:0 1px 0 0;
+    border-color:white;
+}
+
+.right-section{
+    position:relative;
+    flex:5;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    .form-container{
+        position:absolute;
+        display:flex;
+        flex-direction:column;
+        justify-content:start;
+        top:100px;
+        height:max-content;
+        width:70%;
+        padding:10px;  
+        padding-bottom:100px;
+        background-color:white;
+        box-shadow: 0px 0px 2px 2px rgb(30, 29, 29);
+        color:gray;
+        border-radius:20px;
+
+        & section{
+            width:90%;
+            margin-top:50px;
+
+            & h3{
+                font-weight:400;
+                color:#232129;
+            }
+
+            .form-elements{
+                margin-top:30px;
+                width:100%;
+                display:flex;
+                flex-direction: row;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                
+                .input-container{
+                    width:40%;
+                    margin-top:10px;
+                    & label{
+                        font-size:12px;
+                    }
+                    & input{
+                        width:100%;
+                        font-size:12px;
+                        outline:none;
+                        border:2px solid #e3e3e3;
+                        background-color: #e3e3e3;
+                        border-radius: 7px;
+                        height:40px;
+                        padding-left:10px;
+                        padding-right:10px;
+                        box-sizing: border-box;
+                        margin-top:5px;
+                        &:focus{
+                            border:2px solid #1d60b8;
+                        }
+                    }
+                }
+
+            }
+            
+        }
+
+        .new-emp-badge{
+            display:flex;
+            padding:15px;
+            position:absolute;
+            top:-20px;
+            left:0;
+            width:fit-content;
+            background-color: #1d60b8;
+            color:white;
+            font-size:11px;
+            font-weight:600;
+            border-radius:20px;
+        }
+        & .submit-btn{
+                box-sizing: border-box;
+                position:absolute;
+                bottom:20px;
+                right:20px;
+                width:fit-content;
+                height:40px;
+                width:100px;
+                color:white;
+                background-color: #1d60b8;
+                outline:none;
+                border:none;
+                border-radius:20px;
+                font-size:12px;
+                &:hover{
+                    cursor:pointer;
+                    background-color:#2d82f0;
+                    transition:0.2s ease-in;
+                }
+            }   
+            .margin-box{
+                position:absolute;
+                bottom:-60px;
+                background-color:transparent;
+                height:60px;   
+                width:100px;
+                z-index:100;
+            }
+    }
+    overflow-y: scroll;
+}
