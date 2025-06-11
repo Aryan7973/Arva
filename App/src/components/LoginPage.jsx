@@ -15,7 +15,7 @@ const LoginForm = () => {
     const handleSubmit = async(e)=>{
         e.preventDefault();
 
-        const backendUrl = 'http://localhost:5000/api/auth/signin';
+        const backendUrl = 'https://super-duper-acorn-9p6xqgr6vvxc99gg-5000.app.github.dev/api/auth/signin';
 
         try{
             const response = await axios.post(backendUrl,{companyEmail,password});
@@ -26,7 +26,7 @@ const LoginForm = () => {
         }catch(error){
             console.log(error)
             if(error.response){
-                setResponseMessage(`${error.response.data.msg || 'Someting went wrong!'}`);
+                setResponseMessage(`${error.response.data.msg || error.message || 'Someting went wrong!'}`);
             }else if(error.request){
                 setResponseMessage('Error: No response from server. Please check your network connection or backend server status.');
             }else{

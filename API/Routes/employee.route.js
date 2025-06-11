@@ -7,7 +7,7 @@ const {createEmployee, showEmployees, updateEmployee,removeEmployee} = require("
 router.post("/test",(req,res)=>res.status(200).send("Post Worked!"))
 
 // Created
-router.post("/createEmployee",createEmployee);
+router.post("/register",createEmployee);
 
 // Read
 router.get("/",showEmployees);

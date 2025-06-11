@@ -60,7 +60,7 @@ const RegisterEmployee = ()=>{
 
     const handleRegister = async(e)=>{
         e.preventDefault();
-        const Url = 'http://localhost:5000/api/employee/createEmployee';
+        const Url = 'https://super-duper-acorn-9p6xqgr6vvxc99gg-5000.app.github.dev/api/employee/register';
 
         const requiredFields = [
             "employeeId", "firstName", "lastName", "jobRole", "dateOfBirth",
@@ -91,7 +91,7 @@ const RegisterEmployee = ()=>{
         }catch(error){
             console.log(error);
             if(error.response){
-                setResponseMessage(`${error.response.data.msg || 'Someting went wrong!'}`);
+                setResponseMessage(`${error.response.data.message || 'Someting went wrong!'}`);
             }else if(error.request){
                 setResponseMessage('Error: No response from server. Please check your network connection or backend server status.');
             }else{
@@ -165,7 +165,13 @@ const RegisterEmployee = ()=>{
                             </div>
                             <div className="input-container">
                             <label>Gender</label>
-                            <input type="text" name='gender' value={employeeData.gender} onChange={handleChange} required/>
+                            <select onChange={handleChange}>
+                                <option value={employeeData.gender}></option>
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
+                                <option vlaue="O">Other</option>
+                            </select>
+                            {/* <input type="text" name='gender' value={employeeData.gender} onChange={handleChange} required/> */}
                             </div>
                         </div>
                     </section>

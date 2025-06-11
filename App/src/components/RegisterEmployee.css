@@ -68,6 +68,8 @@
                 flex-wrap: wrap;
                 
                 .input-container{
+                    display:flex;
+                    flex-direction: column;
                     width:40%;
                     margin-top:10px;
                     & label{
@@ -87,6 +89,25 @@
                         margin-top:5px;
                         &:focus{
                             border:2px solid #1d60b8;
+                        }
+                    }
+                    & select{
+                        width:60%;
+                        font-size:12px;
+                        outline:none;
+                        border:2px solid #e3e3e3;
+                        background-color: #e3e3e3;
+                        border-radius: 7px;
+                        height:40px;
+                        padding-left:10px;
+                        padding-right:10px;
+                        box-sizing: border-box;
+                        margin-top:5px;
+                        &:focus{
+                            border:2px solid #1d60b8;
+                        }
+                        & option{
+                            font-size:12px;
                         }
                     }
                 }

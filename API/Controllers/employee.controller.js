@@ -52,7 +52,7 @@ const createEmployee = async (req, res) => {
 
     } catch (error) {
         console.log(error)
-        res.send("Internal system error!")
+        res.status(500).send(error)
     }
 }
 
