@@ -63,9 +63,9 @@ const RegisterEmployee = ()=>{
         const Url = 'https://super-duper-acorn-9p6xqgr6vvxc99gg-5000.app.github.dev/api/employee/register';
 
         const requiredFields = [
-            "employeeId", "firstName", "lastName", "jobRole", "dateOfBirth",
-            "reportingManager", "department", "projectCode", "joiningDate",
-            "companyEmail", "personalEmail", "gender", "phoneNumber", "password"
+            "employeeId", , "joiningDate","companyEmail", "password", "firstName", "lastName", "personalEmail", "phoneNumber", "dateOfBirth", "gender",
+            , "department", "projectCode","jobRole", "reportingManager", "workShift"
+            
         ]
 
         // checkes and alerts whether everything is filled or not.
@@ -165,7 +165,7 @@ const RegisterEmployee = ()=>{
                             </div>
                             <div className="input-container">
                             <label>Gender</label>
-                            <select onChange={handleChange}>
+                            <select name="gender" onChange={handleChange}>
                                 <option value={employeeData.gender}></option>
                                 <option value="M">Male</option>
                                 <option value="F">Female</option>

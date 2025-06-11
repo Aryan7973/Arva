@@ -22,12 +22,20 @@ const createEmployee = async (req, res) => {
     } = req.body;
 
     try {
-        let existingEmployee = await Employee.findOne({ companyEmail })
 
-        if (existingEmployee) {
-            console.log("Employee exists!")
-            res.send("Employee already exists!")
-            return;
+        // Check for Unique information
+          let existingEmployeeId = await Employee.findOne({employeeId})
+    
+        if (existingEmployeeId) { 
+            console.log("Employee ID already exists!")
+            return res.send("Employee ID already exists!")
+        }
+        
+        let existingEmail = await Employee.findOne({ companyEmail })
+
+        if (existingEmail) {
+            console.log("Organisation email already in use!")
+            return res.send("Organisation email already in use!")
         }
 
         const user = await Employee.create({
