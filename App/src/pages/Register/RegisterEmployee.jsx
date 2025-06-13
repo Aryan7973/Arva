@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import './RegisterEmployee.css'
 import axios from 'axios';
-import Popup from './Popup';
+import Popup from '../../components/common/Popup/Popup.jsx';
 
 const RegisterEmployee = ()=>{
 

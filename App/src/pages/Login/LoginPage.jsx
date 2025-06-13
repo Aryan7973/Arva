@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {useState, useEffect} from 'react'
 import './LoginPage.css'
-import Popup from "./Popup.jsx"
+import Popup from "../../components/common/Popup/Popup.jsx"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 

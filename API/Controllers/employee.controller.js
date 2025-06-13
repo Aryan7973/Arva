@@ -24,7 +24,7 @@ const createEmployee = async (req, res) => {
     try {
 
         // Check for Unique information
-          let existingEmployeeId = await Employee.findOne({employeeId})
+        let existingEmployeeId = await Employee.findOne({employeeId})
     
         if (existingEmployeeId) { 
             console.log("Employee ID already exists!")
@@ -39,7 +39,7 @@ const createEmployee = async (req, res) => {
         }
 
         const user = await Employee.create({
-            employeeId: employeeId,
+            employeeId: employeeId, 
             firstName: firstName,
             lastName: lastName,
             jobRole: jobRole,
